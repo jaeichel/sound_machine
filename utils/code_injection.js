@@ -37,7 +37,7 @@ function codeInject() {
   var myCounter = 0;
   var myTotal = 1;
   var myInterval;
-  var record = function(timeout_ms) {
+  window.record = function(timeout_ms) {
     clearInterval(myInterval);
     chunks = [];
     blob = undefined;
