@@ -17,9 +17,11 @@ function codeInject() {
     }
   }
   var dest = newContext.createMediaStreamDestination();
-  newContext.destination = dest;
+  var gainNode = newContext.createGain();
+  gainNode.connect(dest);
+  gainNode.gain.value = 2;
+  newContext.destination = gainNode;
   context = newContext;
-  finishedLoading();
 
   var createAudioPlayer = function() {
     let audio = document.createElement('audio');
@@ -32,6 +34,26 @@ function codeInject() {
     createAudioPlayer();
   }
 
+  window.getBigTitle = function() {
+    return document.getElementsByClassName('bigTitle')[0].innerHTML.slice(
+      0, document.getElementsByClassName('bigTitle')[0].innerHTML.indexOf('<')
+    ).trim();
+  }
+
+  window.getSubTitle = function() {
+    return document.getElementsByClassName('subTitle')[0].innerHTML.trim();
+  }
+
+  window.getDownloadBlob = function(blob) {
+    var e = document.createEvent('MouseEvents');
+    var a = document.createElement('a');
+    a.download = getBigTitle() + ' - ' + getSubTitle + '.ogg';
+    a.href = window.URL.createObjectURL(blob);
+    a.dataset.downloadurl =  ['audio/ogg; codecs=opus', a.download, a.href].join(':');
+    e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+    a.dispatchEvent(e);
+  }
+
   var chunks = [];
   var blob = undefined;
   var myCounter = 0;
@@ -41,7 +63,7 @@ function codeInject() {
     clearInterval(myInterval);
     chunks = [];
     blob = undefined;
-    var mediaRecorder = new MediaRecorder(newContext.destination.stream);
+    var mediaRecorder = new MediaRecorder(dest.stream);
     mediaRecorder.ondataavailable = function(evt) {
       chunks.push(evt.data);
     };
@@ -54,6 +76,8 @@ function codeInject() {
 
       var div = document.getElementById('msg');
       div.innerHTML = '<a href="' + audio.src + '">download</a>';
+
+      getDownloadBlob(blob);
     };
 
     mediaRecorder.start();
@@ -74,4 +98,6 @@ function codeInject() {
       mediaRecorder.stop();
     },  timeout_ms);
   }
+
+  finishedLoading();
 }

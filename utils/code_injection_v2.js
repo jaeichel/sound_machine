@@ -34,6 +34,26 @@ function codeInject() {
     createAudioPlayer();
   }
 
+  window.getBigTitle = function() {
+    return document.getElementsByClassName('bigTitle')[0].innerHTML.slice(
+      0, document.getElementsByClassName('bigTitle')[0].innerHTML.indexOf('<')
+    ).trim();
+  }
+
+  window.getSubTitle = function() {
+    return document.getElementsByClassName('subTitle')[0].innerHTML.trim();
+  }
+
+  window.getDownloadBlob = function(blob) {
+    var e = document.createEvent('MouseEvents');
+    var a = document.createElement('a');
+    a.download = getBigTitle() + ' - ' + getSubTitle + '.ogg';
+    a.href = window.URL.createObjectURL(blob);
+    a.dataset.downloadurl =  ['audio/ogg; codecs=opus', a.download, a.href].join(':');
+    e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+    a.dispatchEvent(e);
+  }
+
   var chunks = [];
   var blob = undefined;
   var myCounter = 0;
@@ -56,6 +76,8 @@ function codeInject() {
 
       var div = document.getElementById('msg');
       div.innerHTML = '<a href="' + audio.src + '">download</a>';
+
+      getDownloadBlob(blob);
     };
 
     mediaRecorder.start();
