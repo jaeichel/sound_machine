@@ -17,7 +17,10 @@ function codeInject() {
     }
   }
   var dest = newContext.createMediaStreamDestination();
-  newContext.destination = dest;
+  var gainNode = newContext.createGain();
+  gainNode.connect(dest);
+  gainNode.gain.value = 2;
+  newContext.destination = gainNode;
   context = newContext;
 
   var createAudioPlayer = function() {
@@ -40,7 +43,7 @@ function codeInject() {
     clearInterval(myInterval);
     chunks = [];
     blob = undefined;
-    var mediaRecorder = new MediaRecorder(newContext.destination.stream);
+    var mediaRecorder = new MediaRecorder(dest.stream);
     mediaRecorder.ondataavailable = function(evt) {
       chunks.push(evt.data);
     };
