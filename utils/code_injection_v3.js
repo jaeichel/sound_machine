@@ -32,6 +32,9 @@ function codeInject() {
   window.gainNode = gainNode;
   window.speakerGain = speakerGain;
 
+  window.muteSpeaker = () => window.speakerGain.gain.value = 0;
+  window.unmuteSpeaker = () => window.speakerGain.gain.value = 1;
+
   var createAudioPlayer = function() {
     let audio = document.createElement('audio');
     audio.id = 'audioPlayer';
@@ -115,6 +118,7 @@ function loadAllSounds() {
 	  if (typeof AudioContext !== 'undefined') {context = new AudioContext();}
 	  else {context = new webkitAudioContext();}
     codeInject();
+    window.muteSpeaker();
 
 	  for (var i = 0; i < iNUMBERBANDS; ++i) loadWebAudioSound(sourceFileA[i],i);
 	  for (var i = 0; i < iNUMBERBANDS; ++i) loadWebAudioSound(sourceFileB[i],i+iNUMBERBANDS);
