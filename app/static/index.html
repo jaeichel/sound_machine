@@ -1,0 +1,160 @@
+<html>
+</head>
+<script>
+function download(uri) {
+  return new Promise(function(resolve, reject) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open('GET', uri, true);
+    xhttp.onload = function(e) {
+      if (xhttp.readyState === 4) {
+        if (xhttp.status === 200) {
+          resolve(xhttp.response);
+        } else {
+          reject(e, xhttp.statusText);
+        }
+      }
+    }
+    xhttp.onerror = function(e) {
+      reject(e, xhttp.statusText);
+    }
+    xhttp.send();
+  });
+}
+
+const API_PREFIX = 'http://arrowlofts.justineichel.com:3001';
+
+function init() {
+  updateScenes();
+  updateDevices();
+  updatePresets();
+  updateTimer();
+  setInterval(updatePresets, 10000);
+  setInterval(updateTimer, 10000);
+}
+
+function updateScenes() {
+  download(API_PREFIX + '/scenes').then(function(scenes) {
+    var sceneSelector = document.getElementById('scene');
+    var scenes = JSON.parse(scenes);
+    for (var scene in scenes) {
+      var option = document.createElement('option');
+      option.text = scene;
+      option.value = scene;
+      sceneSelector.add(option);
+    }
+
+    download(API_PREFIX + '/scenes/selected').then(function(selectedScene) {
+      if (selectedScene) {
+        sceneSelector.value = selectedScene;
+      }
+    });
+  });
+}
+
+function updateDevices() {
+  download(API_PREFIX + '/devices').then(function(devices) {
+    var deviceSelector = document.getElementById('device');
+    var devices = JSON.parse(devices);
+    for (var i in devices) {
+      var device = devices[i];
+      var option = document.createElement('option');
+      option.text = device.deviceFriendlyName;
+      option.value = device.deviceFriendlyName;
+      deviceSelector.add(option);
+    }
+
+    download(API_PREFIX + '/devices/selected').then(function(selectedDevice) {
+      if (selectedDevice) {
+        deviceSelector.value = selectedDevice;
+      }
+    });
+  });
+}
+
+function updatePresets() {
+  download(API_PREFIX + '/presets').then(function(presets) {
+    var presetSelector = document.getElementById('presets');
+    var presets = JSON.parse(presets);
+
+    for (var i = presetSelector.options.length - 1 ; i >= 0 ; --i) {
+        presetSelector.remove(i);
+    }
+
+    for (var preset in presets) {
+      var option = document.createElement('option');
+      option.text = preset;
+      option.value = preset;
+      presetSelector.add(option);
+
+      if (presets[preset].selected) {
+        presetSelector.value = preset;
+      }
+    }
+  });
+}
+
+function cast() {
+  var scene = document.getElementById('scene').value;
+  var device = document.getElementById('device').value;
+  download(API_PREFIX + '/cast?scene=' + scene + '&device=' + device);
+}
+
+function setPreset() {
+  var preset = document.getElementById('presets').value;
+  download(API_PREFIX + '/set_preset?preset=' + preset);
+}
+
+function setTimer() {
+  var timer = document.getElementById('timer').value;
+  download(API_PREFIX + '/set_timer?time=' + timer).then(function() {
+    updateTimer();
+  });
+}
+
+
+function toggleMute() {
+  download(API_PREFIX + '/toggle_mute');
+}
+
+function updateTimer() {
+  download(API_PREFIX + '/get_timer').then(function(time) {
+    time = parseInt(time);
+    if (time > 0) {
+      document.getElementById('time').innerHTML = time + ' min remaining...';
+    } else {
+      document.getElementById('time').innerHTML = '';
+    }
+  });
+}
+
+</script>
+</head>
+<body onload='init();' bgcolor='#000000'>
+  <select id='scene' style='color:white; background:black'></select>
+  <select id='device' style='color:white; background:black'>
+    <option value='stream only'>stream only</option>
+  </select>
+  <input type='button' id='cast' value='Play' onclick='cast();' style='color:white; background:black'></input><br>
+  <div id='divPresets'>
+    <select id='presets' onchange='setPreset();' style='color:white; background:black'></select>
+  </div>
+  <input type='button' id='toggleMute' value='Toggle Mute' onclick='toggleMute();' style='color:white; background:black'></input><br>
+  <select id='timer' style='color:white; background:black'>
+    <option value=1>1 min</option>
+    <option value=5>5 min</option>
+    <option value=10>10 min</option>
+    <option value=15>15 min</option>
+    <option value=20>20 min</option>
+    <option value=20>30 min</option>
+    <option value=45>45 min</option>
+    <option value=60>60 min</option>
+    <option value=120>2 hours</option>
+    <option value=180>3 hours</option>
+  </select><input type='button' id='setTimer' value='Set Timer' onclick='setTimer();' style='color:white; background:black'></input><br>
+  <div id='time' style='color: white;'></div>
+  <audio controls>
+    <source src="http://arrowlofts.justineichel.com:3000/stream.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</body>
+</html>

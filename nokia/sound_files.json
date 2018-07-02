@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Rain on Tent",
+    "genres": ["sleep"],
+    "url": "http://arrowlofts.justineichel.com:3003/sounds/myNoise_RAIN3_16162525253725372516_0_60.mp3"
+  },
+  {
+    "name": "Irish Coast",
+    "genres": ["sleep"],
+    "url": "http://arrowlofts.justineichel.com:3003/sounds/irish_coast_default.ogg"
+  },
+  {
+    "name": "Fish Tank",
+    "genres": [],
+    "url": "http://arrowlofts.justineichel.com:3003/sounds/fish_tank.mp3"
+  }, {
+    "name" :"Tin Roof",
+    "genres": [],
+    "url": "http://arrowlofts.justineichel.com:3003/sounds/tin_roof.mp3"
+  }
+]

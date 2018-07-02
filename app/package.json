@@ -1,0 +1,17 @@
+{
+	"name" : "sound_machine",
+	"version" : "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+	"dependencies": {
+		"acorn": "*",
+		"castv2": "*",
+		"castv2-client": "*",
+		"express": "*",
+		"mdns-js": ">=0.5.3",
+		"lame": "*",
+		"web-audio-api": "*"
+	}
+}

@@ -1,0 +1,113 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 33 (0x21)
+    Signature Algorithm: sha256WithRSAEncryption
+        Issuer: CN=intermediate-ca.vpn.justineichel.com
+        Validity
+            Not Before: Jul  1 02:08:44 2018 GMT
+            Not After : Jul  1 02:08:44 2019 GMT
+        Subject: C=CA, ST=Ontario, L=Kitchener, O=none, OU=none, CN=kitchener.justineichel.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:94:79:ff:25:ab:60:a0:bd:c0:e1:62:2e:bb:dd:
+                    50:fe:a3:39:58:74:a6:f4:3e:5d:46:61:50:28:88:
+                    4e:a5:6f:b1:03:99:87:70:50:bf:df:5b:c2:e4:55:
+                    b7:c7:6a:a0:5f:4c:df:00:d6:b6:c0:8e:de:a6:6c:
+                    94:5e:9b:25:4f:80:c9:99:32:d6:d6:cb:7d:de:42:
+                    83:61:f9:37:6a:a2:d6:04:5b:b4:fc:0d:18:1e:f1:
+                    58:e4:0c:9e:56:f2:07:c7:ee:66:1e:68:33:92:0d:
+                    b3:fe:dc:b8:c6:fa:20:88:d5:63:87:62:22:f2:17:
+                    61:f1:8a:b5:9a:53:65:6b:20:a3:a5:27:e4:b7:43:
+                    8a:11:d6:28:ff:5e:4a:bb:e3:6e:d8:05:c4:ad:45:
+                    a0:ad:88:04:4b:46:11:bc:bc:8c:40:0b:ab:83:2e:
+                    74:69:f5:47:b6:03:fd:1e:c5:15:ee:94:6d:ac:79:
+                    2a:f8:81:4e:d5:a2:b2:16:38:00:57:6f:7f:7d:05:
+                    cb:fc:47:0a:c5:30:74:14:d7:82:ee:6f:e3:af:9a:
+                    90:ff:73:6e:5a:a7:28:c8:20:80:b7:da:6c:9f:de:
+                    97:57:b4:ed:7e:ee:19:2f:78:ed:c8:46:48:8c:51:
+                    0b:f0:41:1b:f7:60:76:94:9b:e5:90:12:15:88:01:
+                    04:23
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Cert Type: 
+                SSL Server
+            X509v3 CRL Distribution Points: 
+
+                Full Name:
+                  URI:https://ca.vpn.justineichel.com/crl.pem
+
+            Netscape Comment: 
+                OpenSSL Generated Server Certificate
+            X509v3 Key Usage: 
+                Digital Signature, Key Encipherment
+            X509v3 Extended Key Usage: 
+                TLS Web Server Authentication
+            X509v3 Subject Key Identifier: 
+                99:32:76:04:FD:DE:41:4A:F9:4E:F6:D4:6C:31:5F:63:C2:B7:D3:96
+            X509v3 Subject Alternative Name: 
+                DNS:kitchener.justineichel.com
+    Signature Algorithm: sha256WithRSAEncryption
+         2c:4b:9a:39:97:b9:22:b5:6a:8e:b5:b2:47:79:ca:09:81:02:
+         37:95:e8:2f:36:39:2d:cb:24:9a:60:15:53:52:d6:14:02:4e:
+         5e:a1:41:10:1c:71:a8:9e:24:72:6e:bd:be:14:ff:44:5e:e5:
+         9f:ab:ff:48:ea:7d:5e:01:db:f3:f7:00:54:7b:2e:30:30:18:
+         66:a2:ab:6e:03:ef:22:48:f5:1e:14:a6:04:72:46:b2:cf:ee:
+         9c:be:41:ca:86:fc:a2:ff:1d:b8:ca:94:fb:f2:d5:61:31:e7:
+         7e:d7:2d:3a:a5:c4:74:70:9d:c5:7c:45:20:4f:59:47:d7:62:
+         0c:5b:1d:7d:15:39:22:b6:c9:bb:f3:7c:61:e2:f6:ce:cf:87:
+         9c:db:d2:bc:1e:52:0e:85:c9:cb:f7:ab:89:fe:d3:49:08:9f:
+         a9:2c:74:4c:16:ce:0a:4d:a3:62:78:82:e0:d1:65:7c:57:74:
+         d1:10:76:ea:e6:6b:86:97:1e:86:73:e0:42:b3:c3:87:3c:ae:
+         e9:07:73:61:36:45:07:89:9b:9e:a9:66:0d:49:e0:5a:8a:73:
+         7e:ec:c2:79:0e:10:15:ba:91:51:ab:5a:08:8e:26:68:8e:63:
+         76:76:a1:5f:00:7d:92:b8:ed:49:e0:23:f3:37:d1:12:d1:9c:
+         62:cc:5e:11:c1:e9:77:85:2b:d5:1e:77:18:2e:f3:e1:53:7b:
+         a7:a4:6d:47:36:20:28:ba:ea:3c:86:4d:e0:29:77:b2:da:29:
+         f2:e5:3d:13:a2:cd:c2:8d:90:21:bb:21:dc:1a:64:2f:44:65:
+         b9:a9:83:46:34:f3:b7:36:f4:9e:d7:ff:dc:7d:19:cc:bd:7c:
+         c0:bc:dc:7e:84:10:30:ae:7f:30:61:af:69:ae:79:60:32:7b:
+         33:0c:00:0f:10:76:43:63:cf:c7:8d:a2:26:c2:b0:96:f2:8e:
+         33:8f:e8:7f:b1:4b:5f:ea:3f:02:9c:c8:65:1c:b9:37:88:59:
+         fe:72:0d:87:81:83:65:54:43:01:c9:56:b9:5f:76:aa:45:36:
+         c9:20:76:38:4c:56:02:3d:bd:1d:6d:d0:8e:85:06:a8:1d:3b:
+         17:11:2a:95:d2:62:cd:e4:f2:42:c0:c8:22:60:7c:cd:d4:ae:
+         ac:4b:44:35:78:df:e6:a7:89:9b:fb:2f:7f:d4:ef:5e:e3:3e:
+         49:89:13:92:14:7e:37:6a:9e:dc:68:77:59:6f:c1:51:09:c4:
+         45:43:e8:8c:67:c8:0d:89:70:f0:a3:f1:36:2c:11:b2:85:32:
+         cd:2b:3d:50:b7:ea:0e:74:5e:b9:50:17:60:ab:fe:05:ad:6b:
+         61:25:d9:5e:a6:24:8d:44
+-----BEGIN CERTIFICATE-----
+MIIFGTCCAwGgAwIBAgIBITANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDDCRpbnRl
+cm1lZGlhdGUtY2EudnBuLmp1c3RpbmVpY2hlbC5jb20wHhcNMTgwNzAxMDIwODQ0
+WhcNMTkwNzAxMDIwODQ0WjB2MQswCQYDVQQGEwJDQTEQMA4GA1UECBMHT250YXJp
+bzESMBAGA1UEBxMJS2l0Y2hlbmVyMQ0wCwYDVQQKEwRub25lMQ0wCwYDVQQLEwRu
+b25lMSMwIQYDVQQDExpraXRjaGVuZXIuanVzdGluZWljaGVsLmNvbTCCASIwDQYJ
+KoZIhvcNAQEBBQADggEPADCCAQoCggEBAJR5/yWrYKC9wOFiLrvdUP6jOVh0pvQ+
+XUZhUCiITqVvsQOZh3BQv99bwuRVt8dqoF9M3wDWtsCO3qZslF6bJU+AyZky1tbL
+fd5Cg2H5N2qi1gRbtPwNGB7xWOQMnlbyB8fuZh5oM5INs/7cuMb6IIjVY4diIvIX
+YfGKtZpTZWsgo6Un5LdDihHWKP9eSrvjbtgFxK1FoK2IBEtGEby8jEALq4MudGn1
+R7YD/R7FFe6Ubax5KviBTtWishY4AFdvf30Fy/xHCsUwdBTXgu5v46+akP9zblqn
+KMgggLfabJ/el1e07X7uGS947chGSIxRC/BBG/dgdpSb5ZASFYgBBCMCAwEAAaOB
++DCB9TAJBgNVHRMEAjAAMBEGCWCGSAGG+EIBAQQEAwIGQDA4BgNVHR8EMTAvMC2g
+K6AphidodHRwczovL2NhLnZwbi5qdXN0aW5laWNoZWwuY29tL2NybC5wZW0wMwYJ
+YIZIAYb4QgENBCYWJE9wZW5TU0wgR2VuZXJhdGVkIFNlcnZlciBDZXJ0aWZpY2F0
+ZTALBgNVHQ8EBAMCBaAwEwYDVR0lBAwwCgYIKwYBBQUHAwEwHQYDVR0OBBYEFJky
+dgT93kFK+U721GwxX2PCt9OWMCUGA1UdEQQeMByCGmtpdGNoZW5lci5qdXN0aW5l
+aWNoZWwuY29tMA0GCSqGSIb3DQEBCwUAA4ICAQAsS5o5l7kitWqOtbJHecoJgQI3
+legvNjktyySaYBVTUtYUAk5eoUEQHHGoniRybr2+FP9EXuWfq/9I6n1eAdvz9wBU
+ey4wMBhmoqtuA+8iSPUeFKYEckayz+6cvkHKhvyi/x24ypT78tVhMed+1y06pcR0
+cJ3FfEUgT1lH12IMWx19FTkitsm783xh4vbOz4ec29K8HlIOhcnL96uJ/tNJCJ+p
+LHRMFs4KTaNieILg0WV8V3TREHbq5muGlx6Gc+BCs8OHPK7pB3NhNkUHiZueqWYN
+SeBainN+7MJ5DhAVupFRq1oIjiZojmN2dqFfAH2SuO1J4CPzN9ES0ZxizF4Rwel3
+hSvVHncYLvPhU3unpG1HNiAouuo8hk3gKXey2iny5T0Tos3CjZAhuyHcGmQvRGW5
+qYNGNPO3NvSe1//cfRnMvXzAvNx+hBAwrn8wYa9prnlgMnszDAAPEHZDY8/HjaIm
+wrCW8o4zj+h/sUtf6j8CnMhlHLk3iFn+cg2HgYNlVEMByVa5X3aqRTbJIHY4TFYC
+Pb0dbdCOhQaoHTsXESqV0mLN5PJCwMgiYHzN1K6sS0Q1eN/mp4mb+y9/1O9e4z5J
+iROSFH43ap7caHdZb8FRCcRFQ+iMZ8gNiXDwo/E2LBGyhTLNKz1Qt+oOdF65UBdg
+q/4FrWthJdlepiSNRA==
+-----END CERTIFICATE-----
