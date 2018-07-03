@@ -42,11 +42,6 @@ function codeInject() {
     player.appendChild(audio);
   }
 
-  if (document.getElementById('audioPlayer') === null) {
-    createAudioPlayer();
-    createDivContainer();
-  }
-
   var createDivContainer = function() {
     var divContainer = document.getElementById('msg');
 
@@ -61,6 +56,11 @@ function codeInject() {
     recordDiv.class = 'msg';
     recordDiv.innerHTML = '<a href="#" onclick="record(60*60*1000);">record</a>';
     divContainer.appendChild(recordDiv);
+  }
+
+  if (document.getElementById('audioPlayer') === null) {
+    createAudioPlayer();
+    createDivContainer();
   }
 
   window.getBigTitle = function() {
