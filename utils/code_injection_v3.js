@@ -19,7 +19,7 @@ function codeInject() {
   var dest = newContext.createMediaStreamDestination();
   var gainNode = newContext.createGain();
   gainNode.connect(dest);
-  gainNode.gain.value = 2;
+  gainNode.gain.value = 4;
   newContext.destination = gainNode;
   context = newContext;
 
