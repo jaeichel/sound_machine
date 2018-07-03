@@ -48,13 +48,17 @@ function codeInject() {
     var newMsg = document.createElement('div');
     newMsg.id = 'msg';
     newMsg.class = 'msg';
-    divContainer.setAttribute('id', 'divContainer');
-    divContainer.appendChild(newMsg);
+    newMsg.innerHTML = divContainer.innerHTML;
+
 
     var recordDiv = document.createElement('div');
     recordDiv.id = 'recordDiv';
     recordDiv.class = 'msg';
     recordDiv.innerHTML = '<a href="#" onclick="record(60*60*1000);">record</a>';
+
+    divContainer.setAttribute('id', 'divContainer');
+    divContainer.innerHTML = '';
+    divContainer.appendChild(newMsg);
     divContainer.appendChild(recordDiv);
   }
 
