@@ -59,7 +59,7 @@ function codeInject() {
   window.getDownloadBlob = function(blob) {
     var e = document.createEvent('MouseEvents');
     var a = document.createElement('a');
-    a.download = getBigTitle() + ' - ' + getSubTitle + '.ogg';
+    a.download = getBigTitle() + ' - ' + getSubTitle() + '.ogg';
     a.href = window.URL.createObjectURL(blob);
     a.dataset.downloadurl =  ['audio/ogg; codecs=opus', a.download, a.href].join(':');
     e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
