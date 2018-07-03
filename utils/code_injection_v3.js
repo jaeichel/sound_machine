@@ -93,6 +93,7 @@ function codeInject() {
     };
 
     mediaRecorder.start();
+    window.muteSpeaker();
     var div = document.getElementById('msg');
     div.innerHTML = 'recording...';
     myCounter = 0;
@@ -118,7 +119,6 @@ function loadAllSounds() {
 	  if (typeof AudioContext !== 'undefined') {context = new AudioContext();}
 	  else {context = new webkitAudioContext();}
     codeInject();
-    window.muteSpeaker();
 
 	  for (var i = 0; i < iNUMBERBANDS; ++i) loadWebAudioSound(sourceFileA[i],i);
 	  for (var i = 0; i < iNUMBERBANDS; ++i) loadWebAudioSound(sourceFileB[i],i+iNUMBERBANDS);
