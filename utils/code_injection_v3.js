@@ -44,6 +44,23 @@ function codeInject() {
 
   if (document.getElementById('audioPlayer') === null) {
     createAudioPlayer();
+    createDivContainer();
+  }
+
+  var createDivContainer = function() {
+    var divContainer = document.getElementById('msg');
+
+    var newMsg = document.createElement('div');
+    newMsg.id = 'msg';
+    newMsg.class = 'msg';
+    divContainer.setAttribute('id', 'divContainer');
+    divContainer.appendChild(newMsg);
+
+    var recordDiv = document.createElement('div');
+    recordDiv.id = 'recordDiv';
+    recordDiv.class = 'msg';
+    recordDiv.innerHTML = '<a href="#" onclick="record(60*60*1000);">record</a>';
+    divContainer.appendChild(recordDiv);
   }
 
   window.getBigTitle = function() {
@@ -86,7 +103,7 @@ function codeInject() {
       audio.src = URL.createObjectURL(blob);
       console.log(audio.src);
 
-      var div = document.getElementById('msg');
+      var div = document.getElementById('recordDiv');
       div.innerHTML = '<a href="' + audio.src + '">download</a>';
 
       getDownloadBlob(blob);
@@ -94,7 +111,7 @@ function codeInject() {
 
     mediaRecorder.start();
     window.muteSpeaker();
-    var div = document.getElementById('msg');
+    var div = document.getElementById('recordDiv');
     div.innerHTML = 'recording...';
     myCounter = 0;
     myTotal = timeout_ms / 1000;
