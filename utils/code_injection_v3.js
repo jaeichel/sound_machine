@@ -34,6 +34,13 @@ function codeInject() {
 
   window.muteSpeaker = () => window.speakerGain.gain.value = 0;
   window.unmuteSpeaker = () => window.speakerGain.gain.value = 1;
+  window.toggleSpeaker = () => {
+    if (window.speakerGain.gain.value === 0) {
+      window.unmuteSpeaker();
+    } else {
+      window.muteSpeaker();
+    }
+  };
 
   var createAudioPlayer = function() {
     let audio = document.createElement('audio');
@@ -50,11 +57,11 @@ function codeInject() {
     newMsg.class = 'msg';
     newMsg.innerHTML = divContainer.innerHTML;
 
-
     var recordDiv = document.createElement('div');
     recordDiv.id = 'recordDiv';
     recordDiv.class = 'msg';
-    recordDiv.innerHTML = '<a href="#" onclick="record(60*60*1000);">record</a>';
+    recordDiv.innerHTML = '<a href="#" onclick="record(60*60*1000);">record</a>' +
+      ' | <a href="#" onclick="toggleSpeaker();">toggle mute</a>';
 
     divContainer.setAttribute('id', 'divContainer');
     divContainer.innerHTML = '';
@@ -108,22 +115,24 @@ function codeInject() {
       console.log(audio.src);
 
       var div = document.getElementById('recordDiv');
-      div.innerHTML = '<a href="' + audio.src + '">download</a>';
+      div.innerHTML = '<a href="' + audio.src + '">download</a>' +
+        ' | <a href="#" onclick="toggleSpeaker();">toggle mute</a>';
 
       getDownloadBlob(blob);
     };
 
     mediaRecorder.start();
-    window.muteSpeaker();
     var div = document.getElementById('recordDiv');
-    div.innerHTML = 'recording...';
+    div.innerHTML = 'recording...' +
+      ' | <a href="#" onclick="toggleSpeaker();">toggle mute</a>';
     myCounter = 0;
     myTotal = timeout_ms / 1000;
     myInterval = setInterval(() => {
       let percent = (myCounter / myTotal * 100).toFixed(2);
       ++myCounter;
       if (myCounter < myTotal) {
-        div.innerHTML = 'recording (' + percent + '%)...';
+        div.innerHTML = 'recording (' + percent + '%)...' +
+          ' | <a href="#" onclick="toggleSpeaker();">toggle mute</a>';
       }
     }, 1000);
     setTimeout(() => {
