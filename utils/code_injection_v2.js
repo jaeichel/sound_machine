@@ -45,6 +45,9 @@ function codeInject() {
         window.gainNode.context.currentTime + (1-gain) * timeDuration
       );
     }
+    window.speakerGain.gain.setValueAtTime(
+      0, window.gainNode.context.currentTime + timeDuration
+    );
   }
   window.unmuteSpeaker = () => {
     let a = document.getElementById('toggleMuteA');
@@ -59,6 +62,9 @@ function codeInject() {
         window.gainNode.context.currentTime + gain * timeDuration
       );
     }
+    window.speakerGain.gain.setValueAtTime(
+      1, window.gainNode.context.currentTime + timeDuration
+    );
   }
   window.toggleSpeaker = () => {
     if (Math.round(window.speakerGain.gain.value) === 0) {
