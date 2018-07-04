@@ -70,6 +70,9 @@ function codeInject() {
     muteDiv.class = 'msg';
     muteDiv.innerHTML = '<a href="#" id="toggleMuteA" onclick="toggleSpeaker();">mute</a>';
 
+    var spacer = document.createElement('span');
+    spacer.innerHTML = ' | ';
+
     var recordDiv = document.createElement('span');
     recordDiv.id = 'recordDiv';
     recordDiv.class = 'msg';
@@ -77,6 +80,7 @@ function codeInject() {
 
     var recordDivContainer = document.createElement('div');
     recordDivContainer.appendChild(muteDiv);
+    recordDivContainer.appendChild(spacer);
     recordDivContainer.appendChild(recordDiv);
 
     divContainer.setAttribute('id', 'divContainer');
