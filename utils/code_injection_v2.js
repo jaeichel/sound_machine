@@ -35,15 +35,33 @@ function codeInject() {
   window.muteSpeaker = () => {
     let a = document.getElementById('toggleMuteA');
     a.innerHTML = 'unmute';
-    window.speakerGain.gain.value = 0;
+    const duration = 100;
+    const step = 1.0 / duration;
+    const timeDuration = 2;
+    for (let gain=1.0; gain >= 0; gain -= step) {
+      let roundedGain = Math.min(Math.max(0, Math.round(gain*100) / 100), 1);
+      window.speakerGain.gain.setValueAtTime(
+        roundedGain,
+        window.gainNode.context.currentTime + (1-gain) * timeDuration
+      );
+    }
   }
   window.unmuteSpeaker = () => {
     let a = document.getElementById('toggleMuteA');
     a.innerHTML = 'mute';
-    window.speakerGain.gain.value = 1;
+    const duration = 100;
+    const step = 1.0 / duration;
+    const timeDuration = 2;
+    for (let gain=0; gain <= 1; gain += step) {
+      let roundedGain = Math.min(Math.max(0, Math.round(gain*100) / 100), 1);
+      window.speakerGain.gain.setValueAtTime(
+        roundedGain,
+        window.gainNode.context.currentTime + gain * timeDuration
+      );
+    }
   }
   window.toggleSpeaker = () => {
-    if (window.speakerGain.gain.value === 0) {
+    if (Math.round(window.speakerGain.gain.value) === 0) {
       window.unmuteSpeaker();
     } else {
       window.muteSpeaker();
