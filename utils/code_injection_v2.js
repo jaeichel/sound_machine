@@ -199,32 +199,33 @@ function loadAllSounds() {
 	}
 }
 
-Function.prototype.clone = function() {
-  var that = this;
-  var temp = function temporary() { return that.apply(this, arguments); };
-  for(var key in this) {
-    if (this.hasOwnProperty(key)) {
-      temp[key] = this[key];
-    }
-  }
-  return temp;
-};
+window.presetName = 'Default';
+function setPreset(l0,l1,l2,l3,l4,l5,l6,l7,l8,l9,text){
+	if (bMUTE==1) toggleMute();
+	currentLevel[0] = l0;
+	currentLevel[1] = l1;
+	currentLevel[2] = l2;
+	currentLevel[3] = l3;
+	currentLevel[4] = l4;
+	currentLevel[5] = l5;
+	currentLevel[6] = l6;
+	currentLevel[7] = l7;
+	currentLevel[8] = l8;
+	currentLevel[9] = l9;
+	saveRandomExchange();
+	if (bANIMATE==0) {
+	  setCurrentLevelsToSliders();
+	  if(typeof(text)==='undefined') msg("");
+	  else msg(text);
+	}
+	customLinkAssign('emphasis','actionlink','Apply Calibration',emphasis);
 
-document.getElementsByTagName("body")[0].addEventListener("load", () => {
-  window.oldSetPreset = setPreset.clone();
-  window.setPreset = function(...params) {
-    let text;
-    if (params.length === 11) {
-      text = params[10];
-    }
-    oldSetPreset(...params);
-    if (text) {
-      window.presetName = text;
-    } else {
-      window.presetName = 'levels';
-      for (let i=0; i<10; ++i) {
-        window.presetName += '_' + params[i];
-      }
+  if (text) {
+    window.presetName = text;
+  } else {
+    window.presetName = 'levels';
+    for (let i=0; i<10; ++i) {
+      window.presetName += '_' + params[i];
     }
   }
-}, false);
+}
