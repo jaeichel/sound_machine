@@ -210,20 +210,21 @@ Function.prototype.clone = function() {
   return temp;
 };
 
-var oldSetPreset = setPreset.clone();
-window.presetName = 'Default';
-function setPreset(...params) {
-  let text;
-  if (params.length === 11) {
-    text = params[10];
-  }
-  oldSetPreset(...params);
-  if (text) {
-    window.presetName = text;
-  } else {
-    window.presetName = 'levels';
-    for (let i=0; i<10; ++i) {
-      window.presetName += '_' + params[i];
+document.getElementsByTagName("body")[0].addEventListener("load", () => {
+  window.oldSetPreset = setPreset.clone();
+  window.setPreset = function(...params) {
+    let text;
+    if (params.length === 11) {
+      text = params[10];
+    }
+    oldSetPreset(...params);
+    if (text) {
+      window.presetName = text;
+    } else {
+      window.presetName = 'levels';
+      for (let i=0; i<10; ++i) {
+        window.presetName += '_' + params[i];
+      }
     }
   }
-}
+}, false);
