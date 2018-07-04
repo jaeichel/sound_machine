@@ -90,7 +90,7 @@ function codeInject() {
     newMsg.innerHTML = divContainer.innerHTML;
 
     var muteDiv = document.createElement('span');
-    muteDiv.id = 'recordDiv';
+    muteDiv.id = 'muteDiv';
     muteDiv.class = 'msg';
     muteDiv.innerHTML = '<a href="#" id="toggleMuteA" onclick="toggleSpeaker();">mute</a>';
 
