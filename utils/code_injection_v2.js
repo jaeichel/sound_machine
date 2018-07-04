@@ -125,7 +125,7 @@ function codeInject() {
   }
 
   window.getSubTitle = function() {
-    return document.getElementsByClassName('subTitle')[0].innerHTML.trim();
+    return window.presetName;
   }
 
   window.getDownloadBlob = function(blob) {
@@ -197,4 +197,33 @@ function loadAllSounds() {
 	else{
 		for (var i = 0; i < iNUMBERBANDS; ++i) loadHTML5AudioSound(i);
 	}
+}
+
+Function.prototype.clone = function() {
+  var that = this;
+  var temp = function temporary() { return that.apply(this, arguments); };
+  for(var key in this) {
+    if (this.hasOwnProperty(key)) {
+      temp[key] = this[key];
+    }
+  }
+  return temp;
+};
+
+var oldSetPreset = setPreset.clone();
+window.presetName = 'Default';
+function setPreset(...params) {
+  let text;
+  if (params.length === 11) {
+    text = params[10];
+  }
+  oldSetPreset(...params);
+  if (text) {
+    window.presetName = text;
+  } else {
+    window.presetName = 'levels';
+    for (let i=0; i<10; ++i) {
+      window.presetName += '_' + params[i];
+    }
+  }
 }
