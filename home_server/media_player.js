@@ -5,7 +5,7 @@ const { Chromecast } = require('./chromecast');
 
 const SOUND_FILES = require('./sound_files.json');
 
-const SOUND_LEVEL = 0.25;
+const SOUND_LEVEL = 0.4;
 const SLEEP_TIMEOUT_MS = 20*60*1000;
 const FADE_LEVEL_STEP = 0.01;
 const FADE_LEVEL_PERIOD_MS = 500;

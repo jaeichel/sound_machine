@@ -3,13 +3,14 @@ const crypto = require('crypto');
 const OAuth = require('oauth-1.0a');
 
 const consumer = {
-  key: 'xxx',
-  secret: 'xxx'
+  key: '25b0508269c6b500f57b0013ec2369e7e8cc0813c992d4fe9442743fdee0',
+  secret: '1dc3293923b0133b76001d2cd52eb5f4decc64dbb53c2fb74130153bd7c7'
 };
 const token = {
-  key: 'xxx',
-  secret: 'xxx'
+  key: '17b9219bd3be518e24f6c0cc05c9cdb39b21201592849680fcc11d368446525',
+  secret: '9bdf27e47805e56fbc2480e2f9c747559d5dcf44def1f198feb628e449f'
 };
+
 const deviceId = '0';
 const userId = '14438849';
 
