@@ -1,3 +1,5 @@
+// Injector Settings: loading, inject
+
 function codeInject() {
   if (window.oldContext === undefined) {
     window.oldContext = context;
@@ -19,13 +21,13 @@ function codeInject() {
   var dest = newContext.createMediaStreamDestination();
   var gainNode = newContext.createGain();
   gainNode.connect(dest);
-  gainNode.gain.value = 4;
+  gainNode.gain.value = 10;
   newContext.destination = gainNode;
   context = newContext;
 
   var speakerGain = newContext.createGain();
   speakerGain.connect(oldContext.destination);
-  speakerGain.gain.value = 1;
+  speakerGain.gain.value = .1;
   gainNode.connect(speakerGain);
 
   window.dest = dest;
